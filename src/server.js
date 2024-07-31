@@ -36,17 +36,13 @@ app.delete("/alunos/:id", (request, response) => {
 
     console.log(alunoIndex)
 
-
     if (alunoIndex != -1) {
         const aluno = alunos[alunoIndex]
         alunos.splice(alunoIndex)
         return response.json(aluno);
-
     }
 
-
-
-    return response.status(404).json();
+    return response.status(404).json({message:"User not found!"});
 })
 
 app.put("/alunos/:id", (request, response) => {
@@ -59,7 +55,6 @@ app.put("/alunos/:id", (request, response) => {
     const alunoIndex = alunos.findIndex(aluno => aluno.id == id)
 
     console.log(alunoIndex)
-
 
     if (alunoIndex != -1) {
 
@@ -74,9 +69,7 @@ app.put("/alunos/:id", (request, response) => {
 
     }
 
-
-
-    return response.status(404).json();
+    return response.status(404).json({message:"User not found!"});
 })
 
 const PORT = 3333
